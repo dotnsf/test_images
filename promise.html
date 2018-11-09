@@ -1,0 +1,43 @@
+<html>
+<head>
+<script>
+var t = 1000;
+function p(){
+  new Promise((resolve1,reject1) => {
+    setTimeout( function(){
+      console.log( 'resolve1' );
+      resolve1(1);
+    }, t );
+  }).then( (result1) => {
+    console.log( 'result1 = ' + result1 );
+    new Promise((resolve2,reject2) => {
+      setTimeout( function(){
+        console.log( 'resolve2' );
+        resolve2(2);
+      }, t );
+    }).then( (result2) => {
+      console.log( 'result2 = ' + result2 );
+      new Promise((resolve3,reject3) => {
+        setTimeout( function(){
+          console.log( 'resolve3' );
+          resolve3(3);
+        }, t );
+      }).then( (result3) => {
+        console.log( 'result3 = ' + result3 );
+        new Promise((resolve3,reject3) => {
+          setTimeout( function(){
+            console.log( 'resolve4' );
+            resolve3(4);
+          }, t );
+        }).then( (result4) => {
+          console.log( 'result4 = ' + result4 );
+        });
+      });
+    });
+  });
+}
+
+p();
+</script>
+</head>
+</html>
