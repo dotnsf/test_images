@@ -1,0 +1,49 @@
+<html>
+<head>
+<script>
+var t = 1000;
+
+function p1(){
+  return new Promise( resolve1 => {
+    setTimeout( function(){
+      console.log( 'p1' );
+      resolve1(1);
+    }, t );
+  });
+}
+
+function p2(){
+  return new Promise( resolve2 => {
+    setTimeout( function(){
+      console.log( 'p2' );
+      resolve2(2);
+    }, t );
+  });
+}
+
+function p3(){
+  return new Promise( resolve3 => {
+    setTimeout( function(){
+      console.log( 'p3' );
+      resolve3(3);
+    }, t );
+  });
+}
+
+
+
+async function p(){
+  var c1 = await p1();
+  console.log( 'c1 = ' + c1 );
+
+  var c2 = await p2();
+  console.log( 'c2 = ' + c2 );
+  
+  var c3 = await p3();
+  console.log( 'c3 = ' + c3 );
+}
+
+p();
+</script>
+</head>
+</html>
